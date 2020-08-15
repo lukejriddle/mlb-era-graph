@@ -26,10 +26,10 @@ def get_data(year):
 
 def get_team_data(year, team):
     data = {}
-    data['starting_era_sum'] = 0.0
-    data['bullpen_era_sum'] = 0.0
-    data['starting_pitchers'] = 0
-    data['bullpen_pitchers'] = 0
+    data['starting_er_sum'] = 0
+    data['bullpen_er_sum'] = 0
+    data['starting_ip'] = 0.0
+    data['bullpen_ip'] = 0.0
 
     players, url, team_name = get_players_data(year, team)
 
@@ -40,18 +40,21 @@ def get_team_data(year, team):
             continue
         
         pos = player.find('td', {'data-stat':'pos'}).text
-        era = float(player.find('td', {'data-stat':'earned_run_avg'}).text)
+
+        ip = player.find('td', {'data-stat':'IP'}).text.split('.')
+        innings_pitched = int(ip[0]) + (int(ip[1]) * .33)
+        earned_runs = float(player.find('td', {'data-stat':'ER'}).text)
 
         if pos == 'SP':
-            data['starting_era_sum'] = data.get('starting_era_sum') + era
-            data['starting_pitchers'] = data.get('starting_pitchers') + 1
+            data['starting_er_sum'] = data.get('starting_er_sum') + earned_runs
+            data['starting_ip'] = data.get('starting_ip') + innings_pitched
         else:
-            data['bullpen_era_sum'] = data.get('bullpen_era_sum') + era
-            data['bullpen_pitchers'] = data.get('bullpen_pitchers') + 1
+            data['bullpen_er_sum'] = data.get('bullpen_er_sum') + earned_runs
+            data['bullpen_ip'] = data.get('bullpen_ip') + innings_pitched
 
-    average_starting_era = round(data.get('starting_era_sum') / data.get('starting_pitchers'), 2)
-    average_bullpen_era = round(data.get('bullpen_era_sum') / data.get('bullpen_pitchers'), 2)
-
+    average_starting_era = round(data.get('starting_er_sum') * 9 / data.get('starting_ip'), 2)
+    average_bullpen_era = round(data.get('bullpen_er_sum') * 9/ data.get('bullpen_ip'), 2)
+    
     return {'name':team, 'rotation_era':average_starting_era, 'bullpen_era': average_bullpen_era, 'url': url, 'team_name': team_name} 
 
 def get_players_data(year, team):
