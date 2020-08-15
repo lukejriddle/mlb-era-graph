@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { VictoryScatter, VictoryChart, VictoryTheme, VictoryAxis, VictoryLine, VictoryLabel, VictoryTooltip, createContainer } from 'victory'
+import { VictoryScatter, VictoryChart, VictoryTheme, VictoryAxis, VictoryLine, VictoryLabel, VictoryTooltip, createContainer, VictoryArea } from 'victory'
 
 import { get_series, get_averages, get_domain } from '../helpers/data_util'
 import './Graph.css'
@@ -53,7 +53,7 @@ function Graph(props) {
                         labelComponent={<VictoryLabel x={100}/>}
                         y={() => averages.bullpen_avg} />
 
-
+                    
                     <VictoryAxis
                         label="Rotation ERA"
                         style={{
@@ -73,7 +73,7 @@ function Graph(props) {
                         size={3} 
                         labelComponent={<VictoryTooltip dy={-10} />}
                         data={series}
-                        dataComponent={<TeamPoint />}
+                        dataComponent={<TeamPoint domain={domain}/>}
                         >
                     </VictoryScatter>
                 </VictoryChart>

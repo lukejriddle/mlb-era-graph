@@ -41,7 +41,11 @@ function _get_x_max(team_data) {
             max = team.rotation_era
         }
     }
-    return Math.round(max) + 1
+    if(Math.ceil(max) - max > .5) {
+        return Math.ceil(max)
+    }
+    
+    return Math.ceil(max) + .25
 }
 
 function _get_y_max(team_data) {
@@ -52,7 +56,11 @@ function _get_y_max(team_data) {
             max = team.bullpen_era
         }
     }
-    return Math.round(max) + 1
+    if(Math.ceil(max) - max > .5) {
+        return Math.ceil(max)
+    }
+
+    return Math.ceil(max) + .25
 }
 
 function _get_x_min(team_data) {
@@ -63,7 +71,10 @@ function _get_x_min(team_data) {
             min = team.rotation_era
         }
     }
-    return Math.round(min) - 1
+    if (min - Math.floor(min) > .5) {
+        return Math.floor(min)
+    } 
+    return Math.floor(min) - .25
 }
 
 function _get_y_min(team_data) {
@@ -74,7 +85,10 @@ function _get_y_min(team_data) {
             min = team.bullpen_era
         }
     }
-    return Math.round(min) - 1
+    if (min - Math.floor(min) > .5) {
+        return Math.floor(min)
+    } 
+    return Math.floor(min) - .25
 }
 
 module.exports = {
