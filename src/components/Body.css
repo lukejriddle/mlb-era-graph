@@ -55,3 +55,7 @@ box-shadow: 0 0 0 0 !important;
     width: auto !important;
     min-width: 0
 }
+
+.dataPoint {
+    max-width: 5px !important;
+}

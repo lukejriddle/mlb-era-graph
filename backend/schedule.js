@@ -1,6 +1,6 @@
 const schedule =  require('node-schedule')
 
-schedule.scheduleJob('0 35 * * * *', function() {
+schedule.scheduleJob('0 0 3 * * *', function() {
     console.log('Initiate database update...')
     const { spawn } = require('child_process')
     const testProcess = spawn('python3.8', [__dirname+'/py/update.py', 'gyQK0d4Czs8p'])
