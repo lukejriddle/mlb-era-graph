@@ -2,7 +2,7 @@ require('dotenv').config()
 
 function post_feedback(feedback) {
     console.log('feedback: ' + feedback)
-    fetch('http://localhost:5000/api/email', {
+    fetch('http://mlb-era-graph.com/api/email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -12,7 +12,7 @@ function Graph(props) {
     const [domain, setDomain] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/stats/years/' + props.year)
+        fetch('http://mlb-era-graph.com/api/stats/years/' + props.year)
             .then(result => result.json())
             .then(data => setData(data[0]))
             .catch(error => console.log(error))
