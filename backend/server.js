@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path')
 const app = express();
+const https = require('https')
+const fs = require('fs')
 require('./database');
 require('./schedule')
 
@@ -22,6 +24,9 @@ app.get('*', (req, res) => {
 })
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
+https.createServer({
+    key: fs.readFileSync(__dirname + '/server.key'),
+    cert: fs.readFileSync(__dirname + '/server.cert')
+}).listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
