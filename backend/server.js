@@ -24,9 +24,6 @@ app.get('*', (req, res) => {
 })
 
 const port = process.env.PORT || 5000;
-https.createServer({
-    key: fs.readFileSync(__dirname + '/server.key'),
-    cert: fs.readFileSync(__dirname + '/server.cert')
-}).listen(port, () => {
+app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
