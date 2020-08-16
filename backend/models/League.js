@@ -13,4 +13,4 @@ const yearSchema = new Schema({
     rotation_avg: Number,
     bullpen_avg: Number
 })
-module.exports = mongoose.model("Years", yearSchema, "Years")
+module.exports = mongoose.model("League", yearSchema, "League")

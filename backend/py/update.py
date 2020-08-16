@@ -3,8 +3,8 @@ import datetime
 import sys
 from scrape import scrape
 
-passwrd = sys.argv[1]
-client = pymongo.MongoClient('mongodb+srv://mlb-era-graph-default-user:' + passwrd + '@mlb-era-graph-cluster.l0chs.mongodb.net/Years?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE')
+string = sys.argv[1]
+client = pymongo.MongoClient(string)
 
 YEAR = datetime.datetime.today().year
 QUERY = {"year": YEAR}

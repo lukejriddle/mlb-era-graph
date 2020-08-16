@@ -7,7 +7,8 @@ function get_series(team_data) {
             x: team.rotation_era, 
             y: team.bullpen_era, 
             url: team.url,
-            label: `${team.name} - Rotation: ${team.rotation_era} | Bullpen: ${team.bullpen_era}`
+            label: `${team.name} - Rotation: ${team.rotation_era} | Bullpen: ${team.bullpen_era}`,
+            team_name: team.name
         }
         series.push(info)
     }
