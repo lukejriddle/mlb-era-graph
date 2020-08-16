@@ -35,7 +35,7 @@ figure {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0 0 0;
+    padding: 20px 0 0 20px;
 }
 
 .dropdown-menu {
