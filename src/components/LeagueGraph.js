@@ -5,14 +5,14 @@ import { get_series, get_averages, get_domain } from '../helpers/data_util'
 import './Graph.css'
 import TeamPoint from './TeamPoint'
 
-function Graph(props) {
+function LeagueGraph(props) {
     const [data, setData] = useState({})
     const [series, setSeries] = useState([])
     const [averages, setAverages] = useState({})
     const [domain, setDomain] = useState({})
 
     useEffect(() => {
-        fetch('https://mlb-era-graph.com/api/stats/years/' + props.year)
+        fetch('https://mlb-era-graph.com/api/stats/league/' + props.year)
             .then(result => result.json())
             .then(data => setData(data[0]))
             .catch(error => console.log(error))
@@ -27,6 +27,7 @@ function Graph(props) {
     const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi")
     return (
         <div id="graph_container">
+            <div className="graphOuter" />
             <div id="graph">
                 <VictoryChart
                     width={500}
@@ -73,15 +74,19 @@ function Graph(props) {
                         size={3} 
                         labelComponent={<VictoryTooltip dy={-10} />}
                         data={series}
-                        dataComponent={<TeamPoint domain={domain}/>}
+                        dataComponent={<TeamPoint year={props.year} domain={domain}/>}
                         >
                     </VictoryScatter>
                 </VictoryChart>
+            </div>
+            <div className="graphOuter">
+                <figure id="scrollFigure">
+                    <img src={"mmb.png"} height={"70vh"} width={"70vh"} alt={"scrollwheel"}/>
+                    <figcaption id="scroll">Zoom</figcaption>
+                </figure>
             </div>
         </div>
     )
 }
 
-//<ReactApexChart id="graph" options={options} series={series} type='scatter' width='900px'/>
-
-export default Graph
+export default LeagueGraph

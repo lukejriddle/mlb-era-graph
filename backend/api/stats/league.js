@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router()
 
-const Year = require('../../models/Year');
+const League = require('../../models/League');
 
 router.get('/:year', (req, res) => {
-    Year.find({year: req.params.year})
-        .then(Years => res.json(Years))
+    League.find({year: req.params.year})
+        .then(League => res.json(League))
         .catch(err => console.log(err))
 })
 

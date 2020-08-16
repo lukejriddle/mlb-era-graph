@@ -12,10 +12,7 @@ function GraphNav(props) {
 
     return (
         <div className="graphNav">
-            <figure>
-                <img src={"mmb.png"} height={"70vh"} width={"70vh"} alt={"scrollwheel"}/>
-                <figcaption id="scroll">Zoom</figcaption>
-            </figure>
+            <span className="h5">Year</span>
             <Dropdown id="yearDropdown">
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     {props.year}

@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // API
-const years = require('./api/stats/years');
-app.use('/api/stats/years/', years);
+const league = require('./api/stats/league');
+app.use('/api/stats/league/', league);
 
 const email = require('./api/email');
 app.use('/api/email', email);
