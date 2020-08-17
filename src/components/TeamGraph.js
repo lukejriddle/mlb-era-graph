@@ -17,7 +17,7 @@ function TeamGraph(props) {
     }, [props.year])
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/stats/' + props.year + '/' + team)
+        fetch('https://mlb-era-graph.com/api/stats/' + props.year + '/' + team)
             .then(result => result.json())
             .then(data => setData(data[0]))
             .catch(error => console.log(error))
