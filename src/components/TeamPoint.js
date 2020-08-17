@@ -16,9 +16,7 @@ function TeamPoint(props) {
     const image_height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * (size / 200)
 
     return (
-        <Link to={"/" + props.year + "/" + datum.team_name.toLowerCase()}>
-            <image className="dataPoint" href={url} x={x - image_width} y={y - image_height} width={size + "vw"} height={size + "vh"}/>
-        </Link>
+        <image className="dataPoint" href={url} x={x - image_width} y={y - image_height} width={size + "vw"} height={size + "vh"}/>
     )
 }
 

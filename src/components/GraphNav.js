@@ -5,7 +5,13 @@ import { Dropdown } from 'react-bootstrap'
 function GraphNav(props) {
     const years = [...Array(51).keys()].map(i => i + 1970).reverse().map(function(year){
         return (
-        <Dropdown.Item key={year} onClick={() => props.updateYear(year)}>{year}</Dropdown.Item>
+            <Dropdown.Item key={year} onClick={() => props.updateYear(year)}>{year}</Dropdown.Item>
+        )
+    })
+
+    const teams = props.activeTeams.map(function(team){
+        return (
+            <Dropdown.Item key={team} onClick={() => props.updateTeam(team)}>{team}</Dropdown.Item>
         )
     })
 
@@ -24,7 +30,19 @@ function GraphNav(props) {
                     {years}
                 </Dropdown.Menu>
             </Dropdown>
-            
+
+            <span className="h5">Team</span>
+            <Dropdown id="teamDropdown">
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    {props.team}
+                </Dropdown.Toggle>
+
+                {}
+
+                <Dropdown.Menu>
+                    {teams}
+                </Dropdown.Menu>
+            </Dropdown>
         </div>
     )
 }

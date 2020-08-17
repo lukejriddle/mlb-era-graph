@@ -67,3 +67,15 @@ box-shadow: 0 0 0 0 !important;
 .dataPoint {
     max-width: 5px !important;
 }
+
+.dropdown {
+    margin-bottom: 40px;
+}
+
+#backbutton, #backbutton:hover, #backbutton:visited {
+    color: #000;
+}
+
+#backbuttonDiv {
+    padding-top: 20px;
+}

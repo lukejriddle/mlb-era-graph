@@ -24,6 +24,10 @@ function LeagueGraph(props) {
         setDomain(get_domain(data))
     }, [data])
 
+    useEffect(() => {
+        props.setTeam('League')
+    }, [])
+
     const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi")
     return (
         <div id="graph_container">

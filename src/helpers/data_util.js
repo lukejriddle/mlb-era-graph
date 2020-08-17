@@ -92,8 +92,18 @@ function _get_y_min(team_data) {
     return Math.floor(min) - .25
 }
 
+function get_active_teams(team_data) {
+    var teams = []
+    for (let key in team_data['teams']) {
+        teams.push(team_data.teams[key].name)
+    }
+
+    return teams.sort()
+}
+
 module.exports = {
     get_series: get_series,
     get_domain: get_domain,
-    get_averages: get_averages
+    get_averages: get_averages,
+    get_active_teams: get_active_teams
 }
