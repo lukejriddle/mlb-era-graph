@@ -8,7 +8,7 @@ import './Body.css'
 import Switch from 'react-bootstrap/esm/Switch'
 import { Route, useHistory } from 'react-router-dom'
 
-import { get_active_teams } from '../helpers/data_util'
+import { get_active_teams } from '../helpers/dataUtil'
 
 function Body() {
     const date = new Date()
@@ -19,7 +19,7 @@ function Body() {
     const [activeTeams, setActiveTeams] = useState([])
 
     useEffect(() => {
-        fetch('https://mlb-era-graph.com/api/stats/league/' + year)
+        fetch('https://mlb-era-graph.com/api/stats/leagueStats/' + year)
             .then(result => result.json())
             .then(data => setActiveTeams(get_active_teams(data[0])))
             .catch(error => console.log(error))

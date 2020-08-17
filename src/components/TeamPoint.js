@@ -1,6 +1,5 @@
 import React from 'react'
 import './Body.css'
-import { Link } from 'react-router-dom'
 
 function TeamPoint(props) {
     const initXDomain = props.domain.x

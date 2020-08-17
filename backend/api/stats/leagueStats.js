@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router()
 
-const League = require('../../models/League');
+const League = require('../../models/LeagueStats');
 
 router.get('/:year', (req, res) => {
     League.find({year: req.params.year})

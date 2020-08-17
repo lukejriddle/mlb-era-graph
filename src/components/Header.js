@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Navbar, Nav, Modal, Button, InputGroup, FormControl, Form } from 'react-bootstrap';
-import { post_feedback } from '../helpers/request_util'
+import { Navbar, Nav, Modal, Button, Form } from 'react-bootstrap';
+import { post_feedback } from '../helpers/requestUtil'
 
 function Header() {
     const [show, setShow] = useState(false);

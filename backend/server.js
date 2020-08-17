@@ -12,11 +12,14 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // API
-const league = require('./api/stats/league');
-app.use('/api/stats/league/', league);
+const leagueStats = require('./api/stats/leagueStats');
+app.use('/api/stats/league_stats/', leagueStats);
 
-const team = require('./api/stats/team');
-app.use('/api/stats/', team)
+const teamStats = require('./api/stats/teamStats');
+app.use('/api/stats/team_stats/', teamStats)
+
+const activeYears = require('./api/stats/activeYears')
+app.use('/api/stats/active_years/', activeYears)
 
 const email = require('./api/email');
 app.use('/api/email', email);

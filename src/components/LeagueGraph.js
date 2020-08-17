@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { VictoryScatter, VictoryChart, VictoryTheme, VictoryAxis, VictoryLine, VictoryLabel, VictoryTooltip, createContainer, VictoryArea } from 'victory'
 
-import { get_series, get_averages, get_domain } from '../helpers/data_util'
+import { get_series, get_averages, get_domain } from '../helpers/dataUtil'
 import './Graph.css'
 import TeamPoint from './TeamPoint'
 
@@ -12,7 +12,7 @@ function LeagueGraph(props) {
     const [domain, setDomain] = useState({})
 
     useEffect(() => {
-        fetch('https://mlb-era-graph.com/api/stats/league/' + props.year)
+        fetch('https://mlb-era-graph.com/api/stats/leagueStats/' + props.year)
             .then(result => result.json())
             .then(data => setData(data[0]))
             .catch(error => console.log(error))
