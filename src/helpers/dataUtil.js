@@ -105,10 +105,10 @@ function getAllYears() {
     return [...Array(51).keys()].map(i => i + 1970).reverse()
 }
 
-module.exports = {
-    get_series: get_series,
-    get_domain: get_domain,
-    get_averages: get_averages,
-    getActiveTeams: getActiveTeams,
-    getAllYears: getAllYears
+export {
+    get_series,
+    get_domain,
+    get_averages,
+    getActiveTeams,
+    getAllYears
 }
