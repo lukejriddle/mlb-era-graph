@@ -8,7 +8,7 @@ import './Body.css'
 import Switch from 'react-bootstrap/esm/Switch'
 import { Route, useHistory } from 'react-router-dom'
 
-import { get_active_teams } from '../helpers/dataUtil'
+import { getActiveTeams, getAllYears } from '../helpers/dataUtil'
 
 function Body() {
     const date = new Date()
@@ -17,11 +17,12 @@ function Body() {
     const [year, setYear] = useState(date.getFullYear())
     const [team, setTeam] = useState('League')
     const [activeTeams, setActiveTeams] = useState([])
+    const [activeYears, setActiveYears] = useState(getAllYears())
 
     useEffect(() => {
         fetch('https://mlb-era-graph.com/api/stats/league_stats/' + year)
             .then(result => result.json())
-            .then(data => setActiveTeams(get_active_teams(data[0])))
+            .then(data => setActiveTeams(getActiveTeams(data[0])))
             .catch(error => console.log(error))
         
     },[year])
@@ -32,26 +33,21 @@ function Body() {
         } else {
             history.push('/' + year + '/' + team)
         }
+
+        if (team.localeCompare('League') == 0) {
+            setActiveYears(getAllYears())
+        }
     }, [team])
-
-
-    function updateYear(year) {
-        setYear(year)
-    }
-
-    function updateTeam(team) {
-        setTeam(team)
-    }
 
     return (
         <div className="body">
                 <div className="outer" id="sideMenu">
-                    <GraphNav year={year} team={team} activeTeams={activeTeams} updateYear={updateYear} updateTeam={updateTeam}/>
+                    <GraphNav year={year} team={team} activeTeams={activeTeams} activeYears={activeYears} setYear={setYear} setTeam={setTeam}/>
                 </div>
                 <div className="inner">
                     <Switch>
                         <Route path='/' render={() => <LeagueGraph setTeam={setTeam} year={year}/>} exact/>
-                        <Route path='/:year/:team' render={() => <TeamGraph setTeam={setTeam} setYear={setYear} year={year}/>} />
+                        <Route path='/:year/:team' render={() => <TeamGraph setTeam={setTeam} setYear={setYear} setActiveYears={setActiveYears} year={year}/>} />
                     </Switch>
                 </div>
                 <div className="outer" />

@@ -3,17 +3,18 @@ import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 
 function GraphNav(props) {
-    const years = [...Array(51).keys()].map(i => i + 1970).reverse().map(function(year){
+
+    const yearList = props.team == "League" ? [...Array(51).keys()].map(i => i + 1970).reverse() : props.activeYears.reverse()
+
+    const years = yearList.map(function(year){
         return (
-            <Dropdown.Item key={year} onClick={() => props.updateYear(year)}>{year}</Dropdown.Item>
+            <Dropdown.Item key={year} onClick={() => props.setYear(year)}>{year}</Dropdown.Item>
         )
     })
 
-    const yearList = props.team == "League" ? [...Array(51).keys()].map(i => i + 1970).reverse() : ""
-
     const teams = props.activeTeams.map(function(team){
         return (
-            <Dropdown.Item key={team} onClick={() => props.updateTeam(team)}>{team}</Dropdown.Item>
+            <Dropdown.Item key={team} onClick={() => props.setTeam(team)}>{team}</Dropdown.Item>
         )
     })
 

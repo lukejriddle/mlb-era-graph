@@ -17,7 +17,7 @@ function TeamGraph(props) {
     }, [props.year])
 
     useEffect(() => {
-        fetch('https://mlb-era-graph.com/api/team_stats/' + props.year + '/' + team)
+        fetch('https://mlb-era-graph.com/api/stats/team_stats/' + props.year + '/' + team)
             .then(result => result.json())
             .then(data => setData(data[0]))
             .catch(error => console.log(error))
@@ -25,6 +25,10 @@ function TeamGraph(props) {
 
     useEffect(() => {
         props.setTeam(team.toUpperCase())
+        fetch('https://mlb-era-graph.com/api/stats/active_years/' + team)
+            .then(result => result.json())
+            .then(data => props.setActiveYears(data[0].years))
+            .catch(error => console.log(error))
     }, [team])
 
     useEffect(() => {

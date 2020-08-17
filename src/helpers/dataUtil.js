@@ -92,7 +92,7 @@ function _get_y_min(team_data) {
     return Math.floor(min) - .25
 }
 
-function get_active_teams(team_data) {
+function getActiveTeams(team_data) {
     var teams = []
     for (let key in team_data['teams']) {
         teams.push(team_data.teams[key].name)
@@ -101,9 +101,14 @@ function get_active_teams(team_data) {
     return teams.sort()
 }
 
+function getAllYears() {
+    return [...Array(51).keys()].map(i => i + 1970).reverse()
+}
+
 module.exports = {
     get_series: get_series,
     get_domain: get_domain,
     get_averages: get_averages,
-    get_active_teams: get_active_teams
+    getActiveTeams: getActiveTeams,
+    getAllYears: getAllYears
 }
