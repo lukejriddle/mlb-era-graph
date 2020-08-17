@@ -19,7 +19,7 @@ function Body() {
     const [activeTeams, setActiveTeams] = useState([])
 
     useEffect(() => {
-        fetch('https://mlb-era-graph.com/api/stats/leagueStats/' + year)
+        fetch('https://mlb-era-graph.com/api/stats/league_stats/' + year)
             .then(result => result.json())
             .then(data => setActiveTeams(get_active_teams(data[0])))
             .catch(error => console.log(error))

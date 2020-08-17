@@ -12,7 +12,7 @@ function LeagueGraph(props) {
     const [domain, setDomain] = useState({})
 
     useEffect(() => {
-        fetch('https://mlb-era-graph.com/api/stats/leagueStats/' + props.year)
+        fetch('https://mlb-era-graph.com/api/stats/league_stats/' + props.year)
             .then(result => result.json())
             .then(data => setData(data[0]))
             .catch(error => console.log(error))
