@@ -9,6 +9,8 @@ function GraphNav(props) {
         )
     })
 
+    const yearList = props.team == "League" ? [...Array(51).keys()].map(i => i + 1970).reverse() : ""
+
     const teams = props.activeTeams.map(function(team){
         return (
             <Dropdown.Item key={team} onClick={() => props.updateTeam(team)}>{team}</Dropdown.Item>
@@ -23,9 +25,6 @@ function GraphNav(props) {
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     {props.year}
                 </Dropdown.Toggle>
-
-                {}
-
                 <Dropdown.Menu>
                     {years}
                 </Dropdown.Menu>
@@ -36,9 +35,6 @@ function GraphNav(props) {
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     {props.team}
                 </Dropdown.Toggle>
-
-                {}
-
                 <Dropdown.Menu>
                     {teams}
                 </Dropdown.Menu>

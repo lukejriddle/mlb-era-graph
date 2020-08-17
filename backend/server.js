@@ -15,6 +15,9 @@ app.use(cors());
 const league = require('./api/stats/league');
 app.use('/api/stats/league/', league);
 
+const team = require('./api/stats/team');
+app.use('/api/stats/', team)
+
 const email = require('./api/email');
 app.use('/api/email', email);
 

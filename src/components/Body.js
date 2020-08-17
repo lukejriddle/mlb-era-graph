@@ -51,7 +51,7 @@ function Body() {
                 <div className="inner">
                     <Switch>
                         <Route path='/' render={() => <LeagueGraph setTeam={setTeam} year={year}/>} exact/>
-                        <Route path='/:year/:team' render={() => <TeamGraph setTeam={setTeam} year={year}/>} />
+                        <Route path='/:year/:team' render={() => <TeamGraph setTeam={setTeam} setYear={setYear} year={year}/>} />
                     </Switch>
                 </div>
                 <div className="outer" />
