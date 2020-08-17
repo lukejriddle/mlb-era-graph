@@ -11,11 +11,11 @@ function TeamPoint(props) {
 
     let size = Math.min(Math.max(initExtent/xExtent, 1.25), 3.5)
     const url = datum.url
-    const image_width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) * (size /  200)
-    const image_height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * (size / 200)
+    const imageWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) * (size /  200)
+    const imageHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * (size / 200)
 
     return (
-        <image className="dataPoint" href={url} x={x - image_width} y={y - image_height} width={size + "vw"} height={size + "vh"}/>
+        <image className="dataPoint" href={url} x={x - imageWidth} y={y - imageHeight} width={size + "vw"} height={size + "vh"}/>
     )
 }
 

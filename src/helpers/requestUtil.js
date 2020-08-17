@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-function post_feedback(feedback) {
+function postFeedback(feedback) {
     console.log('feedback: ' + feedback)
     fetch('https://mlb-era-graph.com/api/email', {
         method: 'POST',
@@ -12,6 +12,6 @@ function post_feedback(feedback) {
     .then(data => console.log(data));
 }
 
-module.exports = {
-    post_feedback: post_feedback
+export {
+    postFeedback
 }

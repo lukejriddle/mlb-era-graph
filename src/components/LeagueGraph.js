@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { VictoryScatter, VictoryChart, VictoryTheme, VictoryAxis, VictoryLine, VictoryLabel, VictoryTooltip, createContainer, VictoryArea } from 'victory'
 
-import { get_series, get_averages, get_domain } from '../helpers/dataUtil'
+import { getSeries, getAverages, getDomain } from '../helpers/dataUtil'
 import './Graph.css'
 import TeamPoint from './TeamPoint'
 
@@ -19,9 +19,9 @@ function LeagueGraph(props) {
     }, [props.year])
 
     useEffect(() => {
-        setSeries(get_series(data))
-        setAverages(get_averages(data))
-        setDomain(get_domain(data))
+        setSeries(getSeries(data))
+        setAverages(getAverages(data))
+        setDomain(getDomain(data))
     }, [data])
 
     useEffect(() => {
@@ -30,7 +30,7 @@ function LeagueGraph(props) {
 
     const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi")
     return (
-        <div id="graph_container">
+        <div id="graphContainer">
             <div className="graphOuter" />
             <div id="graph">
                 <VictoryChart

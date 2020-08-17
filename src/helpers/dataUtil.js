@@ -1,4 +1,4 @@
-function get_series(team_data) {
+function getSeries(team_data) {
     var series = []
 
     for (let key in team_data['teams']) {
@@ -15,18 +15,18 @@ function get_series(team_data) {
     return series
 }
 
-function get_averages(team_data) {
+function getAverages(team_data) {
     return {
         rotation_avg: team_data.rotation_avg,
         bullpen_avg: team_data.bullpen_avg
     }
 }
 
-function get_domain(team_data) {
-    let x_max = _get_x_max(team_data)
-    let y_max = _get_y_max(team_data)
-    let x_min = _get_x_min(team_data)
-    let y_min = _get_y_min(team_data)
+function getDomain(team_data) {
+    let x_max = _getXMax(team_data)
+    let y_max = _getYMax(team_data)
+    let x_min = _getXMin(team_data)
+    let y_min = _getYMin(team_data)
 
     return {
         x: [x_min, x_max],
@@ -34,7 +34,7 @@ function get_domain(team_data) {
     }
 }
 
-function _get_x_max(team_data) {
+function _getXMax(team_data) {
     let max = 0
     for (let key in team_data['teams']) {
         let team = team_data.teams[key]
@@ -49,7 +49,7 @@ function _get_x_max(team_data) {
     return Math.ceil(max) + .25
 }
 
-function _get_y_max(team_data) {
+function _getYMax(team_data) {
     let max = 0
     for (let key in team_data['teams']) {
         let team = team_data.teams[key]
@@ -64,7 +64,7 @@ function _get_y_max(team_data) {
     return Math.ceil(max) + .25
 }
 
-function _get_x_min(team_data) {
+function _getXMin(team_data) {
     let min = 9999
     for (let key in team_data['teams']) {
         let team = team_data.teams[key]
@@ -78,7 +78,7 @@ function _get_x_min(team_data) {
     return Math.floor(min) - .25
 }
 
-function _get_y_min(team_data) {
+function _getYMin(team_data) {
     let min = 9999
     for (let key in team_data['teams']) {
         let team = team_data.teams[key]
@@ -106,9 +106,9 @@ function getAllYears() {
 }
 
 export {
-    get_series,
-    get_domain,
-    get_averages,
+    getSeries,
+    getDomain,
+    getAverages,
     getActiveTeams,
     getAllYears
 }

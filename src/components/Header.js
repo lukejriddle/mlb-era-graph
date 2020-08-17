@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Modal, Button, Form } from 'react-bootstrap';
-import { post_feedback } from '../helpers/requestUtil'
+import { postFeedback } from '../helpers/requestUtil'
 
 function Header() {
     const [show, setShow] = useState(false);
@@ -10,7 +10,7 @@ function Header() {
     const handleShow = () => setShow(true);
     const handleSubmit = () => {
         handleClose()
-        post_feedback(input)
+        postFeedback(input)
     }
 
 

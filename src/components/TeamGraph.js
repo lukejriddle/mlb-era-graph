@@ -36,7 +36,7 @@ function TeamGraph(props) {
     },[])
 
     return (
-        <div id="graph_container">
+        <div id="graphContainer">
             <div id="graphOuter">
                 <BackButton />
             </div>
