@@ -109,7 +109,8 @@ function TeamGraph(props) {
                         <TeamGraphLegend />
                     </div>
                     <div className="arrangementNav">
-                        <i style={{fontSize: "12px"}}>In order of rank</i>
+                        <i style={{fontSize: "12px"}}>In order of rank.</i><br/>
+                        <i style={{fontSize: "12px"}}>Min. 5 innings.</i>
                     </div>
                 </div>
             </div>

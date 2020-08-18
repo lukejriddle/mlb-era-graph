@@ -30,7 +30,8 @@ def get_team_data(year, team):
     for player in players:
         if player.find('td', {'data-stat':'pos'}) == None\
             or player.find('td', {'data-stat':'earned_run_avg'}).text == ''\
-            or player.find('td', {'data-stat':'earned_run_avg'}).text == 'inf':
+            or player.find('td', {'data-stat':'earned_run_avg'}).text == 'inf'\
+            or float(player.find('td', {'data-stat':'IP'}).text) < 5:
             continue
         pl_stats = {}
 
