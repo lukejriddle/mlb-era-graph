@@ -23,7 +23,7 @@ def create_or_update_entry():
 
 def entry_exists():
     db = client['Years']
-    col = db['Years']
+    col = db['League']
 
     if col.find_one(QUERY) is not None:
         return True
