@@ -72,7 +72,6 @@ function TeamGraph(props) {
     }
 
     const customLabel = (props) => {
-        console.log(JSON.stringify(props))
         let rotate = `rotate(-30,${props.x},${props.y})`
         let translate = `translate(${props.x},${props.y+5})`
         return <text fontFamily="Courier New" fill="black" textAnchor="end" alignmentBaseline="middle" transform={`${rotate} ${translate}`}>{playerData[props.index].name}</text>
@@ -83,7 +82,7 @@ function TeamGraph(props) {
             <div className="graphOuter">
                 <BackButton />
             </div>
-            <div id="graph" className="mb-4">
+            <div id="graph" className="pt-4 mb-4">
                 <ResponsiveContainer>
                     <BarChart data={playerData}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false}/>
