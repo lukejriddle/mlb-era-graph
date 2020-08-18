@@ -1,5 +1,6 @@
 #graph {
     width: 84%;
+    padding-top: 10px;
 }
 
 .graphOuter {
@@ -80,4 +81,21 @@ box-shadow: 0 0 0 0 !important;
 
 .teamLogo {
     padding: 10px 0 0 10px
+}
+
+.imageContainer {
+    width: fit-content;
+    height: 90%;
+}
+
+.recharts-surface {
+    overflow: visible;
+}
+
+.graphImageNav { 
+    height: 95%
+}
+
+.arrangementNav {
+    height: 5%
 }

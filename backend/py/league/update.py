@@ -35,7 +35,7 @@ def create_entry(document_data):
     col = db['League']
 
     col.insert_one(document_data)
-    print('Created entry for %s.' % YEAR)
+    print('Created entry for %s League.' % YEAR)
     sys.stdout.flush()
 
 def update_entry(document_data):
@@ -43,7 +43,7 @@ def update_entry(document_data):
     col = db['League']
 
     col.replace_one(QUERY, document_data)
-    print('Updated entry for %s.' % YEAR)
+    print('Updated entry for %s League.' % YEAR)
     sys.stdout.flush()
 
 if after_march():

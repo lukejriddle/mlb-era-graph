@@ -4,8 +4,9 @@ import { useHistory, useParams } from 'react-router-dom'
 import { parseData, getMaxIp } from '../helpers/teamGraph/dataUtil'
 
 import BackButton from './BackButton'
+import TeamGraphLegend from './TeamGraphLegend'
 
-import { BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip, ZAxis, Cell, Label, LabelList, ResponsiveContainer } from 'recharts'
+import { BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip, ZAxis, Cell, Label, ReferenceLine, ResponsiveContainer, Legend } from 'recharts'
 import DefaultTooltipContent from 'recharts/lib/component/DefaultTooltipContent'
 
 function TeamGraph(props) {
@@ -51,11 +52,17 @@ function TeamGraph(props) {
 
     function getContent(e) {
         if(e !=  null && e.payload !=  null && e.payload[0] != null) {
+            let posColor = e.payload[0].payload.pos === 'Starter' ? 'rgb(0,100,0)' : 'rgb(0,99,166)'
+
             const newPayload = [
+                {
+                    value: e.payload[0].payload.pos,
+                    color: posColor
+                },
                 {
                     name: 'innings',
                     value: e.payload[0].payload.ip,
-                    color: '#04c'
+                    color: '#777'
                 },
                 ...e.payload
             ]
@@ -64,21 +71,26 @@ function TeamGraph(props) {
         }
     }
 
+    const customLabel = (props) => {
+        console.log(JSON.stringify(props))
+        let rotate = `rotate(-30,${props.x},${props.y})`
+        let translate = `translate(${props.x},${props.y+5})`
+        return <text fontFamily="Courier New" fill="black" textAnchor="end" alignmentBaseline="middle" transform={`${rotate} ${translate}`}>{playerData[props.index].name}</text>
+    }
+
     return (
         <div id="graphContainer">
             <div className="graphOuter">
                 <BackButton />
             </div>
-            <div id="graph">
+            <div id="graph" className="mb-4">
                 <ResponsiveContainer>
                     <BarChart data={playerData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" tick={false} label={"Players"} />
-                        <YAxis dataKey="era"/>
-                        <ZAxis dataKey="ip"/>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false}/>
+                        <XAxis interval={0} dataKey="name" tick={customLabel} />
+                        <YAxis dataKey="era" label={<Label value="earned run avg" angle={-90} dx={-20}/>}/>
                         <Tooltip content={getContent} cursor={{fill: 'rgba(50,50,50,0.1'}}/>
                         <Bar dataKey="era">
-                            {/* <LabelList dataKey="name" position="top" color="#000" angle="270"/> */}
                             {playerData.map((entry, index) => {
                                 let opacity = entry.pos === "Starter" ? entry.ip/maxIp.starter : entry.ip/maxIp.reliever
                                 return(
@@ -90,7 +102,16 @@ function TeamGraph(props) {
                 </ResponsiveContainer>
             </div>
             <div className="graphOuter">
-                <img className="teamLogo" src={data.url} width={"100vw"} height={"100vw"}/>
+                <div className="imageContainer d-flex flex-column align-items-center">
+                    <div className="graphImageNav">
+                        <img className="teamLogo" src={data.url} width={"100vw"} height={"100vw"}/>
+                        <text className="h5">{year}</text>
+                        <TeamGraphLegend />
+                    </div>
+                    <div className="arrangementNav">
+                        <i style={{fontSize: "12px"}}>In order of rank</i>
+                    </div>
+                </div>
             </div>
         </div>
     )
