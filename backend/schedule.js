@@ -1,7 +1,7 @@
 const schedule =  require('node-schedule')
 require('dotenv').config()
 
-schedule.scheduleJob('0 0 3 * * *', function() {
+schedule.scheduleJob('0 0 * * * *', function() {
     console.log('Initiate database update...')
     const { spawn } = require('child_process')
     const leagueUpdateProcess = spawn('python3.8', [__dirname+'/py/league/update.py', process.env.DB_CONNECTION_STRING])
