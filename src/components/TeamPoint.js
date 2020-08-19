@@ -15,7 +15,9 @@ function TeamPoint(props) {
     const imageHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * (size / 200)
 
     return (
-        <image className="dataPoint" href={url} x={x - imageWidth} y={y - imageHeight} width={size + "em"} height={size + "em"}/>
+        <image className="dataPoint" href={url} x={x} y={y} 
+            width={size + "em"} height={size + "em"} 
+            style={{transform: 'translate(-'+size/2 +"em,-" + size/2 + "em)"}}/>
     )
 }
 
