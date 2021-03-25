@@ -3,6 +3,7 @@ import { VictoryScatter, VictoryChart, VictoryTheme, VictoryAxis, VictoryLine, V
 
 import { getSeries, getAverages, getDomain } from '../helpers/dataUtil'
 import './Graph.css'
+import Preseason from './Preseason'
 import TeamPoint from './TeamPoint'
 
 function LeagueGraph(props) {
@@ -19,9 +20,11 @@ function LeagueGraph(props) {
     }, [props.year])
 
     useEffect(() => {
-        setSeries(getSeries(data))
-        setAverages(getAverages(data))
-        setDomain(getDomain(data))
+        if (data) {
+            setSeries(getSeries(data))
+            setAverages(getAverages(data))
+            setDomain(getDomain(data))
+        }
     }, [data])
 
     useEffect(() => {
@@ -30,6 +33,8 @@ function LeagueGraph(props) {
 
     const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi")
     return (
+        data === undefined ?
+        <Preseason /> :
         <div id="graphContainer">
             <div className="graphOuter" />
             <div id="graph">

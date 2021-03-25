@@ -24,7 +24,6 @@ function Body() {
             .then(result => result.json())
             .then(data => setActiveTeams(getActiveTeams(data[0])))
             .catch(error => console.log(error))
-        
     },[year])
 
     useEffect(() => {

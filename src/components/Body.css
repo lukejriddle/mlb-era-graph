@@ -17,3 +17,11 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
+.preseason {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

@@ -4,7 +4,8 @@ import { Dropdown } from 'react-bootstrap'
 
 function GraphNav(props) {
 
-    const yearList = props.team == "League" ? [...Array(51).keys()].map(i => i + 1970).reverse() : [...props.activeYears].reverse()
+    const numYears = new Date().getFullYear() - 1970 + 1;
+    const yearList = props.team == "League" ? [...Array(numYears).keys()].map(i => i + 1970).reverse() : [...props.activeYears].reverse()
 
     const years = yearList.map(function(year){
         return (
